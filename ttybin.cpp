@@ -121,9 +121,17 @@ static const QTCMD_TypeDef qcomandos[] = {
 		qDoNothing,					/* 17*/
 		qDoNothing,					/* 18*/
 		qDoNothing,					/* 19*/
+
 		qDoNothing,					/* 20*/
 		qDoNothing,					/* 21*/
 		qDoNothing,					/* 22*/
+		qDoNothing,					/* 23*/
+		qDoNothing,					/* 24*/
+		qDoNothing,					/* 25*/
+		qDoNothing,					/* 26*/
+		qDoNothing,					/* 27*/
+		qDoNothing,					/* 28*/
+		qDoNothing,					/* 29*/
 
 		//	QT::qReset
 };
