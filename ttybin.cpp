@@ -133,6 +133,39 @@ static const QTCMD_TypeDef qcomandos[] = {
 		qDoNothing,					/* 28*/
 		qDoNothing,					/* 29*/
 
+		qDoNothing,					/* 30*/
+		qDoNothing,					/* 31*/
+		qDoNothing,					/* 32*/
+		qDoNothing,					/* 33*/
+		qDoNothing,					/* 34*/
+		qDoNothing,					/* 35*/
+		qDoNothing,					/* 36*/
+		qDoNothing,					/* 37*/
+		qDoNothing,					/* 38*/
+		qDoNothing,					/* 39*/
+
+		qDoNothing,					/* 40*/
+		qDoNothing,					/* 41*/
+		qDoNothing,					/* 42*/
+		qDoNothing,					/* 43*/
+		qDoNothing,					/* 44*/
+		qDoNothing,					/* 45*/
+		qDoNothing,					/* 46*/
+		qDoNothing,					/* 47*/
+		qDoNothing,					/* 48*/
+		qDoNothing,					/* 49*/
+
+		qDoNothing,					/* 50*/
+		qDoNothing,					/* 51*/
+		qDoNothing,					/* 52*/
+		qDoNothing,					/* 53*/
+		qDoNothing,					/* 54*/
+		qDoNothing,					/* 55*/
+		qDoNothing,					/* 56*/
+		qDoNothing,					/* 57*/
+		qDoNothing,					/* 58*/
+		qDoNothing,					/* 59*/
+
 		//	QT::qReset
 };
 #define QTCMD_COUNT   (sizeof (qcomandos) / sizeof (qcomandos[0]))
