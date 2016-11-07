@@ -58,7 +58,7 @@ CMD_help(UART_Handle uart, int argc, char **argv)
     	//
     	while(g_psCmdTable[i32Index].pcCmd)
     	{
-    		n = sprintf(buff, "\r%17s %s\n", g_psCmdTable[i32Index].pcCmd,
+    		n = sprintf(buff, "\r\x1b[32;1m%17s\x1b[0m %s\n", g_psCmdTable[i32Index].pcCmd,
     				g_psCmdTable[i32Index].pcHelp);
     		UART_write(uart, buff, n);
     		i32Index++;
@@ -82,7 +82,7 @@ CMD_help(UART_Handle uart, int argc, char **argv)
     		// arguments.
     		// ustrncmp(argv[1], psCmdEntry->pcCmd, 5)
     		if (!ustrncmp(argv[1], psCmdEntry->pcCmd, 10)) {
-    			n = sprintf(buff, "\n\rCommand: %s\n\r------------------\n\r  %s\n", argv[1], psCmdEntry->pcHelp + 3);
+    			n = sprintf(buff, "\n\rCommand: \x1b[32;1m%s\x1b[0m\n\r------------------\n\r  %s\n", argv[1], psCmdEntry->pcHelp + 3);
     			UART_write(uart, buff, n);
     		}
 

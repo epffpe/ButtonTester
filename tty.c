@@ -16,12 +16,21 @@
 #define CR         0x0D
 #define LF         0x0A
 
+// http://www.google.com/url?q=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FANSI_escape_code%23Colors&sa=D&sntz=1&usg=AFQjCNEf_SdnjOkoNdH0NmZcdzLk1yy4ew
+
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32;1m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 Task_Struct task1Struct;
 Char task1Stack[2048];
 
 
-const char prompt[] = "\repenate@ALTOAviation: > ";
+const char prompt[] = "\r" ANSI_COLOR_GREEN "epenate@ALTOAviation: > " ANSI_COLOR_RESET;
 
 /*----------------------------------------------------------------------------
   Line Editor
@@ -99,7 +108,7 @@ Void ttyFxn(UArg arg0, UArg arg1)
 		//
 		if(i32CmdStatus == CMDLINE_BAD_CMD)
 		{
-			n = sprintf(buff, "Command not recognized!\n");
+			n = sprintf(buff, ANSI_COLOR_RED "Command not recognized!\n" ANSI_COLOR_RESET);
 			UART_write(uart, buff, n);
 		}
 
@@ -108,7 +117,7 @@ Void ttyFxn(UArg arg0, UArg arg1)
 		//
 		else if(i32CmdStatus == CMDLINE_TOO_MANY_ARGS)
 		{
-			n = sprintf(buff, "Too many arguments for command processor!\n");
+			n = sprintf(buff, ANSI_COLOR_RED "Too many arguments for command processor!\n" ANSI_COLOR_RESET);
 			UART_write(uart, buff, n);
 		}
 
@@ -117,7 +126,7 @@ Void ttyFxn(UArg arg0, UArg arg1)
 		//
 		else if(i32CmdStatus == CMDLINE_TOO_FEW_ARGS)
 		{
-			n = sprintf(buff, "Too few arguments for command processor!\n");
+			n = sprintf(buff, ANSI_COLOR_RED "Too few arguments for command processor!\n" ANSI_COLOR_RESET);
 			UART_write(uart, buff, n);
 		}
 	}
