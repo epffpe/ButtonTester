@@ -182,7 +182,7 @@ CMD_stat(UART_Handle uart, int argc, char **argv)
 	bool exit = false, dataAvailable;
 	(void)uart;
 
-	n = sprintf(buff, "\r Press \"q\" to exit\n\r");
+	n = sprintf(buff, "\r Press \"\x1b[32;1mq\x1b[0m\" to exit\n\r");
 	UART_write(uart, buff, n);
 
 	while(!exit){
