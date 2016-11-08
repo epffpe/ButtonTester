@@ -178,7 +178,7 @@ int
 CMD_stat(UART_Handle uart, int argc, char **argv)
 {
 	int n;
-	char buff[64];
+	char buff[128];
 	bool exit = false, dataAvailable;
 	(void)uart;
 
@@ -196,7 +196,7 @@ CMD_stat(UART_Handle uart, int argc, char **argv)
 				return (0);
 			}
 		}
-		n = sprintf(buff, "\r Counter: %d, buttons: %d, errorLow: %d, errorHigh: %d ", g_ui32counter, g_ui32button, g_ui32errorLow, g_ui32errorHigh);
+		n = sprintf(buff, "\r Counter: \x1b[36m%d\x1b[0m, buttons: \x1b[32m%d\x1b[0m, errorLow: \x1b[31;1m%d\x1b[0m, errorHigh: \x1b[31;1m%d\x1b[0m ", g_ui32counter, g_ui32button, g_ui32errorLow, g_ui32errorHigh);
 		UART_write(uart, buff, n);
 		Task_sleep(100);
 	}
