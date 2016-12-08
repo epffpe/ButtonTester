@@ -215,7 +215,7 @@ int
 CMD_eeprom(UART_Handle uart, int argc, char **argv)
 {
 	int n;
-	char buff[64];
+	char buff[128];
 	uint32_t pui32Data[4];
 
     //
@@ -240,17 +240,20 @@ CMD_eeprom(UART_Handle uart, int argc, char **argv)
     if(ustrncmp(argv[1], "read", 4) == 0)
     {
     	EEPROMRead(pui32Data, 0x000, sizeof(pui32Data));
-    	n = sprintf(buff, "\r Counter: %d, buttons: %d, errorLow: %d, errorHigh: %d ", pui32Data[0], pui32Data[1], pui32Data[2], pui32Data[3]);
+    	n = sprintf(buff, "\r Counter: \x1b[36m%d\x1b[0m, buttons: \x1b[32m%d\x1b[0m, errorLow: \x1b[31;1m%d\x1b[0m, errorHigh: \x1b[31;1m%d\x1b[0m ", pui32Data[0], pui32Data[1], pui32Data[2], pui32Data[3]);
     	UART_write(uart, buff, n);
     }else if(ustrncmp(argv[1], "reset", 5) == 0){
     	pui32Data[0] = 0;
     	pui32Data[1] = 0;
     	pui32Data[2] = 0;
     	pui32Data[3] = 0;
-
+    	g_ui32counter = 0;
+		g_ui32button = 0;
+		g_ui32errorLow = 0;
+		g_ui32errorHigh = 0;
     	EEPROMProgram(pui32Data, 0x000, sizeof(pui32Data));
     	EEPROMRead(pui32Data, 0x000, sizeof(pui32Data));
-    	n = sprintf(buff, "\r Counter: %d, buttons: %d, errorLow: %d, errorHigh: %d ", pui32Data[0], pui32Data[1], pui32Data[2], pui32Data[3]);
+    	n = sprintf(buff, "\r Counter: \x1b[36m%d\x1b[0m, buttons: \x1b[32m%d\x1b[0m, errorLow: \x1b[31;1m%d\x1b[0m, errorHigh: \x1b[31;1m%d\x1b[0m ", pui32Data[0], pui32Data[1], pui32Data[2], pui32Data[3]);
     	UART_write(uart, buff, n);
     }else{
     	n = sprintf(buff, " Command not recognized. Please enter eeprom read or eeprom reset");
