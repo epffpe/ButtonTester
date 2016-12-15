@@ -131,6 +131,7 @@ Void heartBeatFxn(UArg arg0, UArg arg1)
 
 	while (1) {
 		if ( g_bStart && (g_ui32counter < 1e6) ){
+			g_ui32counter++;
 			GPIO_write(Board_LED0, 1);
 			Task_sleep(150);
 
@@ -174,8 +175,6 @@ Void heartBeatFxn(UArg arg0, UArg arg1)
 			default:
 				break;
 			}
-
-			g_ui32counter++;
 
 			pui32Data[0] = g_ui32counter;
 			pui32Data[1] = g_ui32button;
