@@ -1,1 +1,5 @@
-.config/.productview.dat
+/Debug/*
+.xdchelp
+/.config/*
+/.launches/*
+/src/*
